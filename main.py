@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 # =========================================================
 API_KEY = "your_api_key_here"  # Note: Use env variable or hide before commit
 BASE_URL = "https://api.siliconflow.cn/v1"
-MODEL_NAME = "deepseek-ai/DeepSeek-R1"
+MODEL_NAME = "Qwen2.5-72B-Instruct"
 EMBEDDING_MODEL = "BAAI/bge-base-zh-v1.5"
 
 # =========================================================
