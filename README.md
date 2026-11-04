@@ -60,3 +60,4 @@ Legal Syllogism Reasoning
    │
    ▼
 Charge, Statutory Provision, and Sentencing Analysis
+## 2. Repository Contents
