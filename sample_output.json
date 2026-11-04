@@ -1,15 +1,606 @@
-
 {
-  "major_premise": "根据《中华人民共和国刑法》第133条规定，违反交通运输管理法规，因而发生重大事故，致人死亡的，处三年以下有期徒刑或者拘役；交通运输肇事后逃逸或者有其他特别恶劣情节的，处三年以上七年以下有期徒刑；因逃逸致人死亡的，处七年以上有期徒刑。同时，根据《最高人民法院关于审理交通肇事刑事案件具体应用法律若干问题的解释》第2条，酒后驾驶致一人死亡并负事故全部责任的，构成交通肇事罪。此外，刑法第67条规定，犯罪以后自动投案并如实供述罪行的，属于自首，可以从轻或减轻处罚。",
-  "minor_premise": [
-    "张某血液酒精含量为150mg/100ml，属于醉酒驾驶",
-    "张某驾驶车辆与行人王某发生碰撞，致王某当场死亡",
-    "交警部门认定张某承担事故全部责任",
-    "张某案发后在现场等待交警处理，构成自首",
-    "张某如实供述犯罪事实"
+  "project": "KG-LSCR",
+  "method": "基于知识图谱与法律三段式推理的交通刑事案情分析方法",
+  "inference_mode": "local_fallback",
+  "case_text": "2023年5月1日晚，被告人张某饮酒后驾驶小型轿车，在某路口与行人王某发生碰撞，致王某当场死亡。经交警部门认定，张某承担事故全部责任。经鉴定，张某血液酒精含量为150mg/100ml。案发后，张某在现场等待交警处理，并如实供述了犯罪事实。",
+  "subject": "张某",
+  "victim": "王某",
+  "tri_state_facts": {
+    "drunk_driving": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "饮酒后驾驶"
+    },
+    "dangerous_driving": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "饮酒后驾驶"
+    },
+    "traffic_accident": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "发生碰撞"
+    },
+    "death": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "死亡"
+    },
+    "serious_injury": {
+      "state": "unknown",
+      "label": "信息不足",
+      "evidence": "未在案情中发现足够明确的支持信息"
+    },
+    "hit_and_run": {
+      "state": "absent",
+      "label": "明确不存在",
+      "evidence": "现场等待"
+    },
+    "self_surrender": {
+      "state": "unknown",
+      "label": "信息不足",
+      "evidence": "未在案情中发现足够明确的支持信息"
+    },
+    "truthful_confession": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "如实供述"
+    },
+    "compensation": {
+      "state": "unknown",
+      "label": "信息不足",
+      "evidence": "未在案情中发现足够明确的支持信息"
+    },
+    "license_status": {
+      "state": "unknown",
+      "label": "信息不足",
+      "evidence": "未在案情中发现足够明确的支持信息"
+    },
+    "full_responsibility": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "承担事故全部责任"
+    },
+    "escape_after_medical_treatment": {
+      "state": "unknown",
+      "label": "信息不足",
+      "evidence": "未在案情中发现足够明确的支持信息"
+    },
+    "alcohol_concentration": {
+      "state": "present",
+      "label": "明确存在",
+      "evidence": "150mg/100ml"
+    }
+  },
+  "attribution_constraints": [
+    {
+      "subject": "张某",
+      "behavior": "驾驶机动车",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "张某",
+      "behavior": "饮酒或醉酒",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "张某",
+      "behavior": "发生交通事故",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "张某",
+      "behavior": "承担事故全部责任",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "张某",
+      "behavior": "事故后留在现场等待处理",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "张某",
+      "behavior": "如实供述案件事实",
+      "attribution": "明确归属于责任主体"
+    },
+    {
+      "subject": "王某",
+      "behavior": "事故中的受害或损害后果",
+      "attribution": "不得将被害人的受害事实误归属于责任主体"
+    }
   ],
-  "legal_application": "张某醉酒驾驶机动车的行为违反交通运输管理法规（对应刑法第133条）；该行为导致一人死亡且负事故全部责任，符合交通肇事罪的构成要件（对应司法解释第2条）；张某现场等待并如实供述，符合自首情节（对应刑法第67条），可依法从宽处理；无逃逸等加重情节。",
-  "predicted_charge": "交通肇事罪",
-  "predicted_articles": ["刑法第133条", "刑法第67条"],
-  "conclusion": "张某的行为构成交通肇事罪。鉴于其自首情节，依法可从轻处罚；建议在三年以下有期徒刑范围内量刑，并考虑适用缓刑的可能性。"
+  "local_case_graph": {
+    "nodes": [
+      {
+        "id": "subject_1",
+        "type": "主体",
+        "name": "张某",
+        "role": "责任主体"
+      },
+      {
+        "id": "victim_1",
+        "type": "主体",
+        "name": "王某",
+        "role": "被害人"
+      },
+      {
+        "id": "fact_drunk_driving",
+        "type": "法定事实要件",
+        "name": "drunk_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "id": "fact_dangerous_driving",
+        "type": "法定事实要件",
+        "name": "dangerous_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "id": "fact_traffic_accident",
+        "type": "法定事实要件",
+        "name": "traffic_accident",
+        "state": "明确存在",
+        "evidence": "发生碰撞"
+      },
+      {
+        "id": "fact_death",
+        "type": "法定事实要件",
+        "name": "death",
+        "state": "明确存在",
+        "evidence": "死亡"
+      },
+      {
+        "id": "fact_hit_and_run",
+        "type": "法定事实要件",
+        "name": "hit_and_run",
+        "state": "明确不存在",
+        "evidence": "现场等待"
+      },
+      {
+        "id": "fact_truthful_confession",
+        "type": "法定事实要件",
+        "name": "truthful_confession",
+        "state": "明确存在",
+        "evidence": "如实供述"
+      },
+      {
+        "id": "fact_full_responsibility",
+        "type": "法定事实要件",
+        "name": "full_responsibility",
+        "state": "明确存在",
+        "evidence": "承担事故全部责任"
+      },
+      {
+        "id": "fact_alcohol_concentration",
+        "type": "法定事实要件",
+        "name": "alcohol_concentration",
+        "state": "明确存在",
+        "evidence": "150mg/100ml"
+      }
+    ],
+    "edges": [
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_drunk_driving",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_dangerous_driving",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_traffic_accident",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_death",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_hit_and_run",
+        "state": "明确不存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_truthful_confession",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_full_responsibility",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_alcohol_concentration",
+        "state": "明确存在"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "驾驶机动车",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "饮酒或醉酒",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "发生交通事故",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "承担事故全部责任",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "事故后留在现场等待处理",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "如实供述案件事实",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "王某",
+        "relation": "实施行为",
+        "target": "事故中的受害或损害后果",
+        "constraint": "不得将被害人的受害事实误归属于责任主体"
+      }
+    ],
+    "metadata": {
+      "source_text_length": 146,
+      "node_count": 10,
+      "edge_count": 15
+    }
+  },
+  "topology_backbone": {
+    "retained_facts": [
+      {
+        "field": "drunk_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "field": "dangerous_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "field": "traffic_accident",
+        "state": "明确存在",
+        "evidence": "发生碰撞"
+      },
+      {
+        "field": "death",
+        "state": "明确存在",
+        "evidence": "死亡"
+      },
+      {
+        "field": "hit_and_run",
+        "state": "明确不存在",
+        "evidence": "现场等待"
+      },
+      {
+        "field": "truthful_confession",
+        "state": "明确存在",
+        "evidence": "如实供述"
+      },
+      {
+        "field": "full_responsibility",
+        "state": "明确存在",
+        "evidence": "承担事故全部责任"
+      },
+      {
+        "field": "alcohol_concentration",
+        "state": "明确存在",
+        "evidence": "150mg/100ml"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "subject_1",
+        "type": "主体",
+        "name": "张某",
+        "role": "责任主体"
+      },
+      {
+        "id": "victim_1",
+        "type": "主体",
+        "name": "王某",
+        "role": "被害人"
+      },
+      {
+        "id": "fact_drunk_driving",
+        "type": "法定事实要件",
+        "name": "drunk_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "id": "fact_dangerous_driving",
+        "type": "法定事实要件",
+        "name": "dangerous_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "id": "fact_traffic_accident",
+        "type": "法定事实要件",
+        "name": "traffic_accident",
+        "state": "明确存在",
+        "evidence": "发生碰撞"
+      },
+      {
+        "id": "fact_death",
+        "type": "法定事实要件",
+        "name": "death",
+        "state": "明确存在",
+        "evidence": "死亡"
+      },
+      {
+        "id": "fact_hit_and_run",
+        "type": "法定事实要件",
+        "name": "hit_and_run",
+        "state": "明确不存在",
+        "evidence": "现场等待"
+      },
+      {
+        "id": "fact_truthful_confession",
+        "type": "法定事实要件",
+        "name": "truthful_confession",
+        "state": "明确存在",
+        "evidence": "如实供述"
+      },
+      {
+        "id": "fact_full_responsibility",
+        "type": "法定事实要件",
+        "name": "full_responsibility",
+        "state": "明确存在",
+        "evidence": "承担事故全部责任"
+      },
+      {
+        "id": "fact_alcohol_concentration",
+        "type": "法定事实要件",
+        "name": "alcohol_concentration",
+        "state": "明确存在",
+        "evidence": "150mg/100ml"
+      }
+    ],
+    "edges": [
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_drunk_driving",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_dangerous_driving",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_traffic_accident",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_death",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_hit_and_run",
+        "state": "明确不存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_truthful_confession",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_full_responsibility",
+        "state": "明确存在"
+      },
+      {
+        "source": "subject_1",
+        "relation": "涉及情节",
+        "target": "fact_alcohol_concentration",
+        "state": "明确存在"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "驾驶机动车",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "饮酒或醉酒",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "发生交通事故",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "承担事故全部责任",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "事故后留在现场等待处理",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "张某",
+        "relation": "实施行为",
+        "target": "如实供述案件事实",
+        "constraint": "明确归属于责任主体"
+      },
+      {
+        "source": "王某",
+        "relation": "实施行为",
+        "target": "事故中的受害或损害后果",
+        "constraint": "不得将被害人的受害事实误归属于责任主体"
+      }
+    ],
+    "complexity": {
+      "time": "O(|V_X| + |E_X|)",
+      "space": "O(|V_X| + |E_X|)"
+    }
+  },
+  "backbone_query": "责任主体：张某；drunk_driving=明确存在；证据：饮酒后驾驶；dangerous_driving=明确存在；证据：饮酒后驾驶；traffic_accident=明确存在；证据：发生碰撞；death=明确存在；证据：死亡；hit_and_run=明确不存在；证据：现场等待；truthful_confession=明确存在；证据：如实供述；full_responsibility=明确存在；证据：承担事故全部责任；alcohol_concentration=明确存在；证据：150mg/100ml",
+  "dual_channel_retrieval": {
+    "statutory_channel": [
+      {
+        "id": "刑法第133条",
+        "title": "交通肇事罪相关规定",
+        "text": "违反交通运输管理法规，因而发生重大事故，致人重伤、死亡或者使公私财产遭受重大损失的，依法承担刑事责任。",
+        "score": 0.214,
+        "channel": "statute"
+      },
+      {
+        "id": "刑法第133条之一",
+        "title": "危险驾驶罪相关规定",
+        "text": "在道路上醉酒驾驶机动车的，依法承担相应刑事责任。",
+        "score": 0.198,
+        "channel": "statute"
+      },
+      {
+        "id": "刑法第67条",
+        "title": "自首相关规定",
+        "text": "犯罪以后自动投案，如实供述自己的罪行的，是自首。",
+        "score": 0.146,
+        "channel": "statute"
+      }
+    ],
+    "historical_case_channel": [
+      {
+        "id": "case_demo_001",
+        "title": "交通肇事致人死亡并现场等待处理案例",
+        "text": "被告人饮酒后驾驶机动车发生交通事故，造成他人死亡并承担主要以上责任，案发后在现场等待处理。",
+        "score": 0.236,
+        "channel": "historical_case"
+      },
+      {
+        "id": "case_demo_002",
+        "title": "醉酒驾驶机动车案例",
+        "text": "被告人在道路上醉酒驾驶机动车，血液酒精含量达到醉酒驾驶标准。",
+        "score": 0.204,
+        "channel": "historical_case"
+      }
+    ]
+  },
+  "legal_reasoning": {
+    "major_premise": "应依据现行有效刑法及相关司法解释对交通犯罪构成要件进行判断。",
+    "minor_premise": [
+      "张某涉及的明确事实要件：drunk_driving, dangerous_driving, traffic_accident, death, truthful_confession, full_responsibility, alcohol_concentration"
+    ],
+    "legal_application": "当前结果由规则化事实状态和检索结果生成，不能替代完整法律审查。",
+    "predicted_charge": "交通肇事罪或相关交通犯罪，需结合完整证据进一步判断",
+    "predicted_articles": [
+      "刑法第133条",
+      "刑法第133条之一",
+      "刑法第67条"
+    ],
+    "sentencing_reference": "现有示例流程未执行完整量刑模型。",
+    "uncertain_facts": [
+      "serious_injury",
+      "self_surrender",
+      "compensation",
+      "license_status",
+      "escape_after_medical_treatment"
+    ],
+    "evidence_trace": [
+      {
+        "field": "drunk_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "field": "dangerous_driving",
+        "state": "明确存在",
+        "evidence": "饮酒后驾驶"
+      },
+      {
+        "field": "traffic_accident",
+        "state": "明确存在",
+        "evidence": "发生碰撞"
+      },
+      {
+        "field": "death",
+        "state": "明确存在",
+        "evidence": "死亡"
+      },
+      {
+        "field": "hit_and_run",
+        "state": "明确不存在",
+        "evidence": "现场等待"
+      },
+      {
+        "field": "truthful_confession",
+        "state": "明确存在",
+        "evidence": "如实供述"
+      },
+      {
+        "field": "full_responsibility",
+        "state": "明确存在",
+        "evidence": "承担事故全部责任"
+      },
+      {
+        "field": "alcohol_concentration",
+        "state": "明确存在",
+        "evidence": "150mg/100ml"
+      }
+    ],
+    "conclusion": "该结果仅用于展示 KG-LSCR 的结构化处理流程。"
+  },
+  "complexity": {
+    "graph_traversal_and_pruning_time": "O(|V_X| + |E_X|)",
+    "graph_storage_space": "O(|V_X| + |E_X|)"
+  },
+  "reproducibility": {
+    "synthetic_demo": true,
+    "statutory_source": "内置示例法规库",
+    "historical_case_source": "内置示例类案库"
+  }
 }
