@@ -1,66 +1,254 @@
-# KG-LSCR: A Traffic Criminal Case Reasoning Method
+# KG-LSCR：基于知识图谱与法律三段式推理的交通刑事案情分析方法
 
-This repository provides the core implementation and a runnable demonstration of **KG-LSCR**, a knowledge-graph-constrained legal reasoning framework for traffic criminal case analysis.
+本仓库用于展示论文《基于知识图谱与法律三段式推理的交通刑事案情分析方法》所提出的 KG-LSCR 方法，提供示例程序、示例输出及论文实验说明。
 
-The corresponding paper is:
+KG-LSCR 面向交通肇事罪与危险驾驶罪相关案情分析，结合三态事实抽取、局部案件图谱、拓扑主干映射、规范—经验双通道检索与法律三段论推理，组织案件事实、法律依据和分析结论。
 
-> **基于知识图谱与法律三段式推理的交通刑事案情分析方法**
+**当前公开版本以示例流程演示为主。本文档中的实验数值为论文报告结果，运行示例程序不会自动复现这些实验数值。**
 
-KG-LSCR combines tri-state fact extraction, local case-graph construction, topology-based query mapping, dual-channel retrieval, and legal syllogism reasoning to improve the factual consistency, legal-retrieval accuracy, and interpretability of traffic criminal case analysis.
+## 1. 方法概述
 
----
+KG-LSCR 包括以下四个核心组件：
 
-## 1. Overview
+| 组件 | 名称 | 主要功能 |
+|---|---|---|
+| TFE | 三态事实边界抽取 | 对关键事实要件进行“明确存在、明确不存在、信息不足”标注，并约束主体与行为的归属关系 |
+| TBM-SR | 拓扑主干映射 | 基于局部案件图谱组织核心主体及法定情节，减少无关分支对查询表示的干扰 |
+| DC-IRAG | 规范—经验双通道隔离检索 | 分别检索成文法规范与历史类案，并区分二者在生成阶段的用途 |
+| LS-CoT | 法律三段论结构化推理 | 按照“规范识别—事实确认—涵摄判断—结论生成”组织分析过程 |
 
-The KG-LSCR pipeline consists of four main components:
-
-1. **Tri-state Factor Extraction (TFE)**  
-   Extracts legally relevant factual elements using three semantic states:
-
-   - Explicitly present
-   - Explicitly absent
-   - Insufficient information
-
-   The module also applies subject–behavior attribution constraints to reduce factual misattribution between defendants, victims, and other participants.
-
-2. **Topology-Based Backbone Mapping for Retrieval (TBM-SR)**  
-   Constructs a local case graph containing the core parties, legally relevant facts, behaviors, and related elements. Topology-based pruning is then applied to reduce irrelevant background information and generate a compact legal query.
-
-3. **Dual-Channel Isolated Retrieval-Augmented Generation (DC-IRAG)**  
-   Separates statutory knowledge from historical-case knowledge at the retrieval-channel level. Statutory provisions are used as normative legal references, while historical cases provide empirical case-level references.
-
-4. **Legal Syllogism Chain-of-Thought Reasoning (LS-CoT)**  
-   Organizes the reasoning process into four stages:
-
-   - Norm identification
-   - Fact confirmation
-   - Legal subsumption
-   - Conclusion generation
-
-The overall workflow is:
+总体流程如下：
 
 ```text
-Case Text
-   │
-   ▼
-Tri-state Factor Extraction
-   │
-   ▼
-Local Case Graph Construction
-   │
-   ▼
-Topology-based Backbone Mapping
-   │
-   ├── Statutory Knowledge Retrieval
-   │
-   └── Historical Case Retrieval
-   │
-   ▼
-Legal Syllogism Reasoning
-   │
-   ▼
-Charge, Statutory Provision, and Sentencing Analysis
+案件事实文本
+    │
+    ▼
+三态事实抽取与主体—行为归属
+    │
+    ▼
+局部案件图谱构建
+    │
+    ▼
+拓扑主干映射与查询生成
+    │
+    ├── 成文法规范通道检索
+    │
+    └── 历史类案通道检索
+    │
+    ▼
+法律三段论结构化推理
+    │
+    ▼
+罪名、法条及量刑参考分析
+```
 
----
+## 2. 仓库文件
 
-## 2. Repository Contents
+```text
+KG-LSCR/
+├── README.md
+├── main.py
+└── sample_output.json
+```
+
+| 文件 | 说明 |
+|---|---|
+| `README.md` | 方法介绍、运行步骤、数据来源与论文实验结果 |
+| `main.py` | 示例程序入口 |
+| `sample_output.json` | 示例输出，用于查看结果结构与字段组织 |
+
+## 3. 环境安装
+
+以下沿用示例程序的 Python 3.8 环境配置。论文完整实验的模型部署环境与示例运行环境应分别配置。
+
+创建并激活环境：
+
+```bash
+conda create -n legal_reasoning python=3.8 -y
+conda activate legal_reasoning
+```
+
+安装相关依赖：
+
+```bash
+pip install torch faiss-cpu openai sentence-transformers
+```
+
+上述命令未固定依赖版本，不代表论文实验的完整环境锁定配置。具体可安装版本及兼容性以实际运行环境为准。
+
+## 4. 示例运行
+
+进入仓库目录后执行：
+
+```bash
+python main.py
+```
+
+示例用于展示案件分析流程及结构化结果。仓库中的 `sample_output.json` 可用于查看示例输出格式。
+
+**示例运行与论文实验的区别：**
+
+- 示例使用合成案件展示处理流程。
+- 示例输出不代表 Test-2000 或 gold100 上的评测结果。
+- 完整实验还需要准备模型服务、处理后的数据划分、法规库、历史类案库及评价程序。
+- 当前说明不构成完整论文实验的一键复现入口。
+
+## 5. 数据来源与处理
+
+### 5.1 CAIL2018
+
+论文实验基于全国司法大数据挑战赛公开数据集 CAIL2018。
+
+官方仓库：
+
+https://github.com/china-ai-law-challenge/CAIL2018
+
+CAIL2018 提供案件事实、罪名、相关法条及刑期等字段。数据下载、使用和引用应遵循原项目的说明及适用要求。本仓库不重复分发原始数据。
+
+### 5.2 Test-2000 测试集
+
+根据论文实验设置，数据处理包括：
+
+1. 筛选交通肇事罪与危险驾驶罪的单一罪名候选案件。
+2. 剔除少于 50 字的短文本记录。
+3. 过滤案情中包含“本院查明”“本院认为”等预设表达的记录，以减少潜在裁判信息泄漏。
+4. 基于语义指纹进行去重。
+5. 从清洗后的候选集中分别选取两类案件各 1,000 件，构建平衡测试集 Test-2000。
+
+论文报告的数据清洗统计如下：
+
+| 清洗阶段 | 交通肇事罪 | 危险驾驶罪 |
+|---|---:|---:|
+| 初始单一罪名候选案件 | 2,649 | 7,972 |
+| 剔除短文本残缺文书 | 25 | 46 |
+| 剔除潜在裁判信息泄漏文书 | 149 | 132 |
+| 剔除重复裁判文书 | 12 | 51 |
+| 清洗后候选案件 | 2,463 | 7,743 |
+| 最终测试集 | 1,000 | 1,000 |
+
+上述统计描述论文的数据处理结果。仅下载原始 CAIL2018 数据，不能保证得到完全相同的测试集；精确复现还需要对应的数据版本、筛选规则、语义去重配置及最终样本标识。
+
+### 5.3 检索知识库与人工复核集
+
+论文另外使用以下资源：
+
+| 资源 | 规模 | 用途 |
+|---|---:|---|
+| 历史类案库 | 10,000 件文书 | 从 CAIL2018 训练语料中选取，提供历史类案参考 |
+| 法规规范库 | 13 条核心条文 | 提供刑法及交通犯罪相关司法解释的规范依据 |
+| gold100 | 100 件案件 | 对同名主体交错、送医与逃逸争议等情形开展细粒度评价和消融分析 |
+
+这三类资源不等同于原始 CAIL2018 数据，完整复现需要对应的选取结果、条文版本及人工标注。
+
+## 6. 论文实验配置
+
+| 项目 | 论文所述配置 |
+|---|---|
+| GPU | NVIDIA RTX 4090 |
+| 向量编码模型 | `BAAI/bge-base-zh-v1.5` |
+| 向量索引 | FAISS |
+| KG-LSCR 生成基座 | `Qwen2.5-72B-Instruct` |
+| TFE 与 LS-CoT 生成基座 | `Qwen2.5-72B-Instruct` |
+| 解码温度 | 0.1 |
+| 主要数据资源 | Test-2000、gold100、法规规范库、历史类案库 |
+
+Qwen2.5-72B-Instruct 的部署还取决于模型精度、量化方式、设备数量和并行配置。仅凭显卡型号无法确定其部署方式，上表不表示该模型可以在单张 RTX 4090 上以全精度加载。
+
+论文比较的方法包括：
+
+- 直接提示的 Qwen2.5-72B；
+- ChatLaw；
+- DISC-LawLLM；
+- Dense-RAG；
+- Legal-CoT；
+- KG-LJP；
+- KG-LSCR。
+
+## 7. 评价指标
+
+| 指标 | 评价内容 | 优化方向 |
+|---|---|---|
+| 罪名 Macro-F1 | 罪名或所定义类别的宏平均 F1 | 越高越好 |
+| 法条推荐 MAP | 法条推荐排序的平均精度均值 | 越高越好 |
+| 主体归属准确率 | 行为、事实与责任主体的匹配情况 | 越高越好 |
+| 事实幻觉率 FHR | 输出中不受事实支持的内容及错误因果表述 | 越低越好 |
+| 三段论推演合规分 SVS | 规范、事实、涵摄与结论的结构完整性和一致性 | 越高越好 |
+| 规范冲突率 NCR | 输出与适用规范发生冲突的情况 | 越低越好 |
+| 量刑 MAE | 建议刑期与法院判决刑期的平均绝对差异，单位为月 | 越低越好 |
+
+FHR、SVS、NCR 等指标涉及具体评价规则。复现时需要明确统计单位、分母、评分标准与人工复核流程；指标名称及概述不能替代完整评价协议。
+
+## 8. 论文报告的主要结果
+
+以下数值整理自论文实验部分，未通过当前仓库的示例程序重新计算。
+
+| 方法 | 罪名 Macro-F1 | 法条 MAP | 主体归属率 | 事实幻觉率 ↓ | 量刑 MAE（月）↓ | 三段论合规分 | 规范冲突率 ↓ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 直接提示 | 75.5% | 65.8% | 68.4% | 31.2% | 13.6 | 68.5 | 28.4% |
+| ChatLaw | 80.0% | 73.2% | 73.5% | 23.8% | 9.2 | 74.2 | 21.5% |
+| DISC-LawLLM | 81.5% | 75.4% | 75.2% | 21.6% | 8.5 | 76.8 | 18.6% |
+| Dense-RAG | 79.7% | 74.1% | 71.8% | 25.4% | 9.8 | 72.0 | 24.2% |
+| Legal-CoT | 82.5% | 77.2% | 76.9% | 19.8% | 7.6 | 79.4 | 16.5% |
+| KG-LJP | 83.5% | 79.0% | 81.2% | 17.5% | 6.8 | 81.2 | 14.2% |
+| **KG-LSCR** | **93.6%** | **89.2%** | **95.8%** | **3.2%** | **2.8** | **94.6** | **2.5%** |
+
+表中“↓”表示数值越低越好。各指标对应的评价样本范围应以论文最终评价协议为准。
+
+## 9. 论文报告的消融结果
+
+论文在人工复核评价集上开展逐步增量消融实验，结果如下：
+
+| 配置 | 罪名 Macro-F1 | 法条 MAP | 主体归属率 | 事实幻觉率 ↓ |
+|---|---:|---:|---:|---:|
+| 基座模型 | 75.5% | 65.8% | 68.4% | 31.2% |
+| 基座模型 + TFE | 82.6% | 71.2% | 87.5% | 16.8% |
+| 基座模型 + TFE + TBM-SR | 86.8% | 78.5% | 91.2% | 11.5% |
+| 基座模型 + TFE + TBM-SR + DC-IRAG | 90.8% | 85.6% | 93.8% | 6.4% |
+| 完整 KG-LSCR | 93.6% | 89.2% | 95.8% | 3.2% |
+
+以上为逐步叠加组件的结果，用于观察特定配置下的增量变化。
+
+## 10. 论文报告的检索实验结果
+
+论文比较了两类查询构建方式与两类索引组织方式：
+
+- 查询方式：原始案情长文、TBM-SR 图谱主干查询。
+- 索引方式：法规与类案混编索引、法规与类案双通道隔离索引。
+
+| 策略 | 查询方式 | 索引方式 | Recall@1 | Recall@3 | CVR | CDIS | 平均延迟 |
+|---|---|---|---:|---:|---:|---:|---:|
+| Raw + Mixed | 原始长文 | 单库混编 | 68.4% | 82.0% | 64.5% | 48.0% | 18.5 ms |
+| TBM + Mixed | 图谱主干 | 单库混编 | 81.5% | 88.2% | 71.2% | 52.4% | 11.2 ms |
+| Raw + DC-IRAG | 原始长文 | 双通道隔离 | 83.0% | 91.5% | 88.4% | 94.5% | 14.6 ms |
+| **TBM + DC-IRAG** | **图谱主干** | **双通道隔离** | **94.2%** | **98.6%** | **96.8%** | **98.2%** | **12.0 ms** |
+
+其中：
+
+- **CVR**：论文定义的法条无幻觉合规率。
+- **CDIS**：论文定义的规范—经验隔离度。
+
+上述延迟为论文报告的检索实验数值，不代表整个案件分析流程的端到端耗时。精确复现需要明确计时范围、预热方式、批大小、重复次数及硬件配置。
+
+## 11. 当前公开范围与复现边界
+
+当前仓库提供示例程序与示例输出，支持查看和演示方法流程。
+
+完整复现论文实验还依赖以下资源与配置：
+
+- CAIL2018 的具体数据版本；
+- Test-2000 的最终样本标识；
+- gold100 的案件清单与人工标注；
+- 数据清洗、去重及划分程序；
+- 13 条法规的具体内容与适用版本；
+- 10,000 件历史类案的选取结果与索引；
+- 生成模型、提示模板、部署配置与解码参数；
+- 各比较方法的具体版本与运行配置；
+- 批量预测文件及评价程序。
+
+**获取 CAIL2018 原始数据并运行合成示例，并不等同于复现论文报告的实验结果。**
+
+## 12. 使用说明
+
+本项目用于法律人工智能方法研究与实验展示。生成内容属于模型分析结果，实际使用时需结合案件证据、现行有效法律规范及专业人员审查。
+
+CAIL2018、模型权重及其他第三方资源分别遵循其原项目的许可与使用要求。
