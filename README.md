@@ -39,7 +39,6 @@ Factual Hallucination Rate: Decreased to 3.2%
 ---
 
 ### 第三步：新建 `requirements.txt`
-随便写几行就行：
 ```text
 torch
 faiss-cpu
