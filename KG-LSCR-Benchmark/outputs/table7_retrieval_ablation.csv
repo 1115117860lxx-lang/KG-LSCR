@@ -1,0 +1,5 @@
+﻿strategy,query_type,index_type,recall_1,recall_3,cvr,cdis,latency
+策略一 (Raw + Mixed),原始千字长文叙述,单库混编检索 (Mixed-RAG),68.4%,82.0%,64.5%,48.0%,18.5ms
+策略二 (TBM + Mixed),图谱主干查询 qKG,单库混编检索 (Mixed-RAG),81.5%,88.2%,71.2%,52.4%,11.2ms
+策略三 (Raw + DC-IRAG),原始千字长文叙述,双通道物理隔离 (DC-IRAG),83.0%,91.5%,88.4%,94.5%,14.6ms
+策略四 (本文完整机制),图谱主干查询 qKG,双通道物理隔离 (DC-IRAG),94.2%,98.6%,96.8%,98.2%,12.0ms

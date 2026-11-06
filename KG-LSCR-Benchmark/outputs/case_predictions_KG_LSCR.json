@@ -1,0 +1,414 @@
+[
+  {
+    "case_id": "cail_traffic_noleak_0001",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条"
+      ],
+      "recommended_penalty_months": 38.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 38.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 1,
+        "致一人重伤": 1,
+        "饮酒/醉酒驾驶": 0,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": 1,
+        "积极抢救伤员并保护现场": 0,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 1,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；损害后果:致一人死亡；事故责任:负事故全部或主要责任；加重情节:交通肇事后逃逸",
+      "retrieved_laws": [
+        "《刑法》第133条 (交通肇事罪基本犯/加重犯构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 24.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0002",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一"
+      ],
+      "recommended_penalty_months": 3.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 3.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 1,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 0,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:醉酒驾驶机动车",
+      "retrieved_laws": [
+        "《刑法》第133条之一 (危险驾驶罪构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0003",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 2.4,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 2.4 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 1,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": 1,
+        "如实供述主要犯罪事实": 1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 0,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:醉酒驾驶机动车；从轻情节:案发后自首投案",
+      "retrieved_laws": [
+        "《刑法》第133条之一 (危险驾驶罪构成要件)",
+        "《刑法》第67条第一款 (法定自首从宽量刑准则)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 3.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0004",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条"
+      ],
+      "recommended_penalty_months": 10.5,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 10.5 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 1,
+        "饮酒/醉酒驾驶": 0,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": 1,
+        "取得被害人或家属谅解": 1,
+        "负道路交通事故全部/主要责任": 1,
+        "驾驶无号牌/严重安全隐患车辆": 1
+      },
+      "graph_query": "被告人:自然人主体；损害后果:致一人重伤；事故责任:负事故全部或主要责任；从轻情节:积极赔偿经济损失；从轻情节:取得被害人家属谅解",
+      "retrieved_laws": [
+        "《刑法》第133条 (交通肇事罪基本犯/加重犯构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 5.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0005",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一"
+      ],
+      "recommended_penalty_months": 3.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 3.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 1,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": 1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 0,
+        "驾驶无号牌/严重安全隐患车辆": 1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:醉酒驾驶机动车",
+      "retrieved_laws": [
+        "《刑法》第133条之一 (危险驾驶罪构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 1.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0006",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一"
+      ],
+      "recommended_penalty_months": 3.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 3.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 1,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": 1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 0,
+        "驾驶无号牌/严重安全隐患车辆": 1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:醉酒驾驶机动车",
+      "retrieved_laws": [
+        "《刑法》第133条之一 (危险驾驶罪构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0007",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条"
+      ],
+      "recommended_penalty_months": 38.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 38.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 1,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 0,
+        "无机动车驾驶证驾驶": 1,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": 1,
+        "积极抢救伤员并保护现场": 0,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 1,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:无有效驾驶证驾驶；损害后果:致一人死亡；事故责任:负事故全部或主要责任；加重情节:交通肇事后逃逸",
+      "retrieved_laws": [
+        "《刑法》第133条 (交通肇事罪基本犯/加重犯构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 36.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0008",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一"
+      ],
+      "recommended_penalty_months": 3.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 3.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 0,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 1,
+        "无机动车驾驶证驾驶": 1,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 0,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；驾驶行为:醉酒驾驶机动车",
+      "retrieved_laws": [
+        "《刑法》第133条之一 (危险驾驶罪构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0009",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条"
+      ],
+      "recommended_penalty_months": 14.0,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 14.0 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 1,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 0,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": -1,
+        "积极赔偿被害人经济损失": -1,
+        "取得被害人或家属谅解": -1,
+        "负道路交通事故全部/主要责任": 1,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；损害后果:致一人死亡；事故责任:负事故全部或主要责任",
+      "retrieved_laws": [
+        "《刑法》第133条 (交通肇事罪基本犯/加重犯构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 15.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0010",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条"
+      ],
+      "recommended_penalty_months": 10.5,
+      "reasoning_rationale": "【法律三段论推演闭环】：大前提为《刑法》第133条各款，小前提经主体行为归属校验，确认被告人主观过失与客观损害结果间具有刑法因果关系；涵摄比对排除逃逸加重情形，结合自首与赔偿量刑情节，确定建议宣告基准刑期为 10.5 个月。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 94.6,
+      "has_norm_conflict": false,
+      "tri_state_vector": {
+        "致一人死亡": 1,
+        "致一人重伤": 0,
+        "饮酒/醉酒驾驶": 0,
+        "无机动车驾驶证驾驶": 0,
+        "被害人自身存在严重过错": -1,
+        "造成交通事故后逃逸": -1,
+        "积极抢救伤员并保护现场": -1,
+        "自首自动投案": -1,
+        "如实供述主要犯罪事实": 1,
+        "积极赔偿被害人经济损失": 1,
+        "取得被害人或家属谅解": 1,
+        "负道路交通事故全部/主要责任": 1,
+        "驾驶无号牌/严重安全隐患车辆": -1
+      },
+      "graph_query": "被告人:自然人主体；损害后果:致一人死亡；事故责任:负事故全部或主要责任；从轻情节:积极赔偿经济损失；从轻情节:取得被害人家属谅解",
+      "retrieved_laws": [
+        "《刑法》第133条 (交通肇事罪基本犯/加重犯构成要件)"
+      ]
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 12.0
+    }
+  }
+]

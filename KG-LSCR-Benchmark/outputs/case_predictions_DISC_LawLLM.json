@@ -1,0 +1,232 @@
+[
+  {
+    "case_id": "cail_traffic_noleak_0001",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 14.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 24.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0002",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 2.5,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0003",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 12.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 3.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0004",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 11.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 5.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0005",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 2.5,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 1.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0006",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 14.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": true
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0007",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 14.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": true,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 36.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0008",
+    "prediction": {
+      "predicted_charge": "危险驾驶罪",
+      "recommended_articles": [
+        "刑法第一百三十三条之一",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 2.5,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": true
+    },
+    "ground_truth": {
+      "charge": "危险驾驶罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 2.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0009",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 14.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": false,
+      "has_factual_hallucination": true,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 15.0
+    }
+  },
+  {
+    "case_id": "cail_traffic_noleak_0010",
+    "prediction": {
+      "predicted_charge": "交通肇事罪",
+      "recommended_articles": [
+        "刑法第一百三十三条",
+        "刑法第六十七条第一款"
+      ],
+      "recommended_penalty_months": 11.0,
+      "reasoning_rationale": "经审查案件事实与证据，涉案机动车驾驶行为符合法定构成要件，且结合到案态度与赔偿情节确定基准刑期。",
+      "has_agent_confusion": true,
+      "has_factual_hallucination": false,
+      "syllogism_compliance_score": 76.8,
+      "has_norm_conflict": false
+    },
+    "ground_truth": {
+      "charge": "交通肇事罪",
+      "articles": [
+        "133"
+      ],
+      "term_months": 12.0
+    }
+  }
+]

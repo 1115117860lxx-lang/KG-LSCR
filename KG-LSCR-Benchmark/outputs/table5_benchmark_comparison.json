@@ -1,0 +1,72 @@
+[
+  {
+    "model_name": "Zero-Shot (直接提示)",
+    "charge_macro_f1": 0.755,
+    "article_map": 0.658,
+    "attrib_acc": 0.684,
+    "fact_hallucination": 0.312,
+    "penalty_mae_months": 13.6,
+    "syllogism_score": 68.5,
+    "norm_conflict": 0.284
+  },
+  {
+    "model_name": "ChatLaw",
+    "charge_macro_f1": 0.8,
+    "article_map": 0.732,
+    "attrib_acc": 0.735,
+    "fact_hallucination": 0.238,
+    "penalty_mae_months": 9.2,
+    "syllogism_score": 74.2,
+    "norm_conflict": 0.215
+  },
+  {
+    "model_name": "DISC-LawLLM",
+    "charge_macro_f1": 0.815,
+    "article_map": 0.754,
+    "attrib_acc": 0.752,
+    "fact_hallucination": 0.216,
+    "penalty_mae_months": 8.5,
+    "syllogism_score": 76.8,
+    "norm_conflict": 0.186
+  },
+  {
+    "model_name": "Dense-RAG",
+    "charge_macro_f1": 0.797,
+    "article_map": 0.741,
+    "attrib_acc": 0.718,
+    "fact_hallucination": 0.254,
+    "penalty_mae_months": 9.8,
+    "syllogism_score": 72.0,
+    "norm_conflict": 0.242
+  },
+  {
+    "model_name": "Legal-CoT",
+    "charge_macro_f1": 0.825,
+    "article_map": 0.772,
+    "attrib_acc": 0.769,
+    "fact_hallucination": 0.198,
+    "penalty_mae_months": 7.6,
+    "syllogism_score": 79.4,
+    "norm_conflict": 0.165
+  },
+  {
+    "model_name": "KG-LJP",
+    "charge_macro_f1": 0.835,
+    "article_map": 0.79,
+    "attrib_acc": 0.812,
+    "fact_hallucination": 0.175,
+    "penalty_mae_months": 6.8,
+    "syllogism_score": 81.2,
+    "norm_conflict": 0.142
+  },
+  {
+    "model_name": "KG-LSCR (本文)",
+    "charge_macro_f1": 0.936,
+    "article_map": 0.892,
+    "attrib_acc": 0.958,
+    "fact_hallucination": 0.032,
+    "penalty_mae_months": 2.8,
+    "syllogism_score": 94.6,
+    "norm_conflict": 0.025
+  }
+]
